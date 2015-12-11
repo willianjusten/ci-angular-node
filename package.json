@@ -1,0 +1,26 @@
+{
+  "name": "ci-angular-node",
+  "version": "1.0.0",
+  "description": "An example of how to do Continuous Integration using MEAN Stack.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ci",
+    "mean",
+    "node",
+    "angular",
+    "express",
+    "mongodb"
+  ],
+  "author": "Willian Justen de Vasconcellos",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.13.3",
+    "jade": "^1.11.0"
+  },
+  "devDependencies": {
+    "bower": "^1.7.0"
+  }
+}

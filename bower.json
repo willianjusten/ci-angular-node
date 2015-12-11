@@ -1,0 +1,24 @@
+{
+  "name": "ci-angular-node",
+  "description": "An example of how to do Continuous Integration using MEAN Stack.",
+  "main": "index.js",
+  "authors": [
+    "Willian Justen de Vasconcellos"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "ci",
+    "mean",
+    "node",
+    "angular",
+    "express",
+    "mongodb"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "angular": "~1.4.8"
+  }
+}
