@@ -3,5 +3,11 @@ script(type="text/javascript", src="/bower_components/angular/angular.min.js")
 script(type="text/javascript", src="/app/app.js")
 
 body(ng-app='app')
-    div(ng-controller='myCtrl as ctrl')
-        h1 {{ctrl.hello}}
+    .container
+        h1 Find a Job Today!
+        div(ng-controller="jobCtrl as jobctrl")
+            .list-group
+                a.list-group-item(href="#")(ng-repeat="job in jobctrl.jobs track by $index")
+                    h4.list-group-item-heading {{job.title}}
+                    p.list-grou-item-text {{job.description}}
+        

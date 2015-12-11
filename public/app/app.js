@@ -5,9 +5,18 @@
 
     angular
         .module('app')
-        .controller('myCtrl', sayHello);
+        .controller('jobCtrl', listJobs);
 
-    function sayHello() {
-        this.hello = 'Hello World';
+    function listJobs() {
+        this.jobs = [
+            {
+                title: 'Python Developer',
+                description: 'We want the best python developer of the world'
+            }, 
+            {
+                title: 'Javascript Developer',
+                description: 'We want the best javascript developer of the world'
+            }
+        ];
     }
 })(); 
