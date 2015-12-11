@@ -5,9 +5,9 @@ script(type="text/javascript", src="/app/app.js")
 body(ng-app='app')
     .container
         h1 Find a Job Today!
-        div(ng-controller="jobCtrl as jobctrl")
+        div(ng-controller="jobCtrl as joblist")
             .list-group
-                a.list-group-item(href="#")(ng-repeat="job in jobctrl.jobs track by $index")
+                a.list-group-item(href="#", ng-repeat="job in joblist.jobs track by $index")
                     h4.list-group-item-heading {{job.title}}
                     p.list-grou-item-text {{job.description}}
         
