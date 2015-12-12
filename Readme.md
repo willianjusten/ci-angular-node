@@ -1,10 +1,10 @@
-#### Continuous Integration and Deployment for AngularJS and Node.js
+## Continuous Integration and Deployment for AngularJS and Node.js
 
 Example files from [Pluralsight Course](https://app.pluralsight.com/library/courses/continuous-integration-deployment-angularjs-nodejs/description).
 
-## Getting Started
+### Getting Started
 
-### Installation
+#### Installation
 
 First of all, install the dependencies to run this app.
 
@@ -24,7 +24,7 @@ $ npm install
 $ bower install
 ```
 
-### How to run
+#### How to run
 
 ```sh
 # Start the server
