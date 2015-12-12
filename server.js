@@ -33,5 +33,4 @@ app.get('*', function(req, res) {
 /**
  * Iniciando o servidor na porta 3000
  */
-app.listen(3000);
-console.log('Running at http://localhost:3000');
+app.listen(process.env.PORT, process.env.IP);
