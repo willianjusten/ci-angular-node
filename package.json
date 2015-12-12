@@ -4,7 +4,7 @@
   "description": "An example of how to do Continuous Integration using MEAN Stack.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "npm install && bower install"
+    "postinstall": "./node_modules/bower/bin/bower install"
   },
   "keywords": [
     "ci",
