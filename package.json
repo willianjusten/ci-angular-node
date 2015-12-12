@@ -4,7 +4,7 @@
   "description": "An example of how to do Continuous Integration using MEAN Stack.",
   "main": "index.js",
   "scripts": {
-     "postinstall": "bower install"
+     "postinstall": "./node_modules/bower/bin/bower install"
   },
   "keywords": [
     "ci",
@@ -18,7 +18,7 @@
   "license": "MIT",
   "dependencies": {
     "express": "^4.13.3",
-    "jade": "^1.11.0"
+    "jade": "^1.11.0",
     "bower": "^1.7.0"
   }
 }
