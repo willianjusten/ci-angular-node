@@ -1,8 +1,11 @@
 /**
  * Definindo e instanciando
- * o nosso framework
+ * o nosso framework e nossa tool 
+ * para manipular o MongoDB
  */
 var express = require('express');
+var mongoose = require('mongoose');
+
 var app = express();
 
 /**
@@ -31,6 +34,21 @@ app.get('*', function(req, res) {
 });
 
 /**
+ * Fazendo conexão ao banco de dados
+ * criado no MongoLab - https://mongolab.com/
+ */
+mongoose.connect('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node');
+
+/**
+ * Reportando se a conexão teve sucesso
+ */
+var con = mongoose.connection;
+con.once('open', function() {
+    console.log('connected to MongoDB');
+});
+
+/**
  * Iniciando o servidor na porta 3000
  */
-app.listen(process.env.PORT, process.env.IP);
+app.listen(process.env.PORT, process.env.HOST);
+console.log('Connected on: http://' + process.env.HOST + ':' + process.env.PORT);
