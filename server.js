@@ -50,5 +50,5 @@ con.once('open', function() {
 /**
  * Iniciando o servidor na porta 3000
  */
-app.listen(process.env.PORT, process.env.HOST);
-console.log('Connected on: http://' + process.env.HOST + ':' + process.env.PORT);
+app.listen(process.env.PORT, process.env.IP);
+console.log('Connected on: http://' + process.env.IP + ':' + process.env.PORT);
