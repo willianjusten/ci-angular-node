@@ -5,6 +5,7 @@
  */
 var express = require('express');
 var mongoose = require('mongoose');
+var jobModel = require('./models/Job.js');
 
 var app = express();
 
@@ -25,6 +26,12 @@ app.use(express.static(__dirname + '/public'));
  */
 app.set('view engine', 'jade');
 
+app.get('/api/jobs', function(req, res) {
+    mongoose.model('Job').find({}).exec(function(err, collection) {
+        res.send(collection);
+    });
+});
+
 /**
  * Aqui estamos definindo que para rota raiz
  * iremos renderizar a view (index.jade)
@@ -44,7 +51,8 @@ mongoose.connect('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-c
  */
 var con = mongoose.connection;
 con.once('open', function() {
-    console.log('connected to MongoDB');
+    console.log('Connected to MongoDB');
+    jobModel.seedJobs();
 });
 
 /**

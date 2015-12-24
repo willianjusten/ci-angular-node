@@ -4,7 +4,8 @@
   "description": "An example of how to do Continuous Integration using MEAN Stack.",
   "main": "index.js",
   "scripts": {
-    "postinstall": "./node_modules/bower/bin/bower install"
+    "postinstall": "./node_modules/bower/bin/bower install",
+    "start": "PORT=3000 IP=0.0.0.0 node server.js"
   },
   "keywords": [
     "ci",
