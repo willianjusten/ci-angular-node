@@ -1,5 +1,7 @@
 ## Continuous Integration and Deployment for AngularJS and Node.js
 
+![Codeship Status](https://codeship.com/projects/0491e570-8dbd-0133-a0fe-46b682e319b3/status?branch=master)
+
 ### Getting Started
 
 #### Installation
