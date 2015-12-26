@@ -4,6 +4,10 @@
 
 ### Getting Started
 
+#### Demo
+
+If you want to see [live](http://ci-angular-node.herokuapp.com/)
+
 #### Installation
 
 First of all, install the dependencies to run this app.
