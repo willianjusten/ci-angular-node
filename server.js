@@ -8,6 +8,8 @@ var jobsData = require('./jobs-data');
 
 var app = express();
 
+require('./jobs-service')(jobsData, app);
+
 /**
  * Definindo onde ficarão nossos arquivos de view
  * __dirname significa que serão os arquivos da raix
