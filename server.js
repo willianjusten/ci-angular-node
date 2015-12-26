@@ -50,8 +50,11 @@ jobsData.connectDB('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder
     });
 
 /**
- * Iniciando o servidor na porta 3000
+ * Iniciando o servidor na porta default ou 5000
  */
-app.listen(3000, function(){
-    console.log('Server Connected on: http://localhost:3000');
+
+app.set('port', (process.env.PORT || 5000));
+
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port', app.get('port'));
 });
