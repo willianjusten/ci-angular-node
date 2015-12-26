@@ -6,7 +6,8 @@
   "scripts": {
     "postinstall": "./node_modules/bower/bin/bower install",
     "localStart": "node server.js",
-    "test": "./node_modules/mocha/bin/mocha test/server"
+    "test": "./node_modules/mocha/bin/mocha test/server",
+    "testFront": "./node_modules/karma/bin/karma start"
   },
   "keywords": [
     "ci",
