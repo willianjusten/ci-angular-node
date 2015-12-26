@@ -17,7 +17,7 @@ var db = {
     }
 };
 
-var jobService = require('../jobs-service')(db, app);
+var jobService = require('../../jobs-service')(db, app);
 
 
 describe('get jobs', function() {

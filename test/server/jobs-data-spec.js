@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
 var Promise = require('bluebird');
-var jobsData = require('../jobs-data');
+var jobsData = require('../../jobs-data');
 
 var mongoAddress = 'mongodb://localhost/ci-angular-node';
 
