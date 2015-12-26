@@ -11,6 +11,8 @@ var jobs = [
     {title:'C++ Developer', description:'The best C++ developer from the world is needed.'}
 ];
 
+var createJob = Promise.promisify(Job.create, {context: Job});
+
 var findJobs = function(query) {
     return Promise.cast(Job.find(query).exec());
 };
@@ -18,8 +20,6 @@ var findJobs = function(query) {
 exports.findJobs = findJobs;
 
 exports.connectDB = Promise.promisify(mongoose.connect, {context: mongoose});
-
-var createJob = Promise.promisify(Job.create, {context: Job});
 
 exports.seedJobs = function() {
     return findJobs({}).then(function(collection) {

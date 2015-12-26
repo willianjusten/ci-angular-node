@@ -1,6 +1,6 @@
 /**
  * Definindo e instanciando
- * o nosso framework e nossa tool 
+ * o nosso framework e nossa tool
  * para manipular o MongoDB
  */
 var express = require('express');
@@ -26,7 +26,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
 
 app.get('/api/jobs', function(req, res) {
-    jobsData.findJobs({}).then(function(collection) {
+    jobsData.findJobs().then(function(collection) {
         res.send(collection);
     });
 });
@@ -44,10 +44,10 @@ app.get('*', function(req, res) {
  * criado no MongoLab - https://mongolab.com/
  */
 jobsData.connectDB('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node')
-.then(function() {
-    console.log('Connected to MongoDB');
-    jobsData.seedJobs();
-});
+    .then(function() {
+        console.log('Connected to MongoDB');
+        jobsData.seedJobs();
+    });
 
 /**
  * Iniciando o servidor na porta 3000
