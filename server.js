@@ -43,7 +43,7 @@ app.get('*', function(req, res) {
  * Fazendo conexão ao banco de dados
  * criado no MongoLab - https://mongolab.com/
  */
-jobsData.connectDB('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node')
+jobsData.connectDB('mongodb://psdev:psdev@ds063869.mongolab.com:63869/jobfinder')
     .then(function() {
         console.log('Connected to MongoDB');
         jobsData.seedJobs();
