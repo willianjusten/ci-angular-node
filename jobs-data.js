@@ -7,31 +7,28 @@ var Job = jobModel.model;
 var findJobs = function(query) {
     return Promise.cast(Job.find(query).exec());
 }
-
-var createJob = Promise.promisify(Job.create, {context:Job});
-
-//exports
-
 exports.findJobs = findJobs;
 
-exports.connectDB = Promise.promisify(mongoose.connect, {context:mongoose});
-
+// Promisifying mongoose methods
+exports.connectDB = Promise.promisify(mongoose.connect, {context: mongoose});
 exports.open = Promise.promisify(mongoose.connection.open, {context:mongoose});
 
+// Seeding Jobs when collection is empty
+var createJob = Promise.promisify(Job.create, {context:Job});
 exports.seedJobs = function() {
     return findJobs({}).then(function(collection){
         if(collection.length === 0) {
-            return Promise.map(seedJobs, function(job){
+            return Promise.map(jobs, function(job){
                 return createJob(job);
             })
         }
     })
 }
 
-var seedJobs = [
-    {title:'Cook', description:'You will be making bagels'},
-    {title:'Waiter', description:'You will be putting food on peoples tables'},
-    {title:'Programmer', description:'You will be mindlessly typing for hours'},
-    {title:'Axe Maker', description:'We need many axes made.. so many..'}
+var jobs = [
+    {title: 'Python Developer', description: 'The best python developer from the world is needed.'},
+    {title: 'Javascript Developer', description: 'The best Javascript developer from the world is needed.'},
+    {title: 'C# Developer', description: 'The best C# developer from the world is needed.'},
+    {title: 'C++ Developer', description: 'The best C++ developer from the world is needed.'}
 ];
 
