@@ -4,8 +4,6 @@
  * para manipular o MongoDB
  */
 var express = require('express');
-var mongoose = require('mongoose');
-var jobModel = require('./models/Job');
 var jobsData = require('./jobs-data');
 
 var app = express();
@@ -47,7 +45,7 @@ app.get('*', function(req, res) {
  */
 
 jobsData.connectDB('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node')
-    .then(function(){
+    .then(function () {
         console.log('Connected to MongoDB');
         jobsData.seedJobs();
     });

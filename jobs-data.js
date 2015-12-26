@@ -8,13 +8,13 @@ var findJobs = function(query) {
     return Promise.cast(Job.find(query).exec());
 }
 
-var createJob = Promise.promisify(Job.create, {context:Job});
+var createJob = Promise.promisify(Job.create, Job);
 
 //exports
 
 exports.findJobs = findJobs;
 
-exports.connectDB = Promise.promisify(mongoose.connect, {context: mongoose});
+exports.connectDB = Promise.promisify(mongoose.connect, mongoose);
 
 exports.seedJobs = function() {
     return findJobs({}).then(function(collection){
