@@ -26,7 +26,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
 
 app.get('/api/jobs', function(req, res) {
-    jobsData.findJobs().then(function(collection) {
+    jobsData.findJobs({}).then(function(collection) {
         res.send(collection);
     });
 });
