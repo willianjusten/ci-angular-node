@@ -1,7 +1,7 @@
 var expect = require('chai').expect;
 var mongoose = require('mongoose');
-var jobModel = require('../models/Job.js');
 var Promise = require('bluebird');
+var jobsData = require('../jobs-data');
 
 var mongoAddress = 'mongodb://localhost/ci-angular-node';
 
@@ -11,21 +11,15 @@ function resetJobs() {
     });
 }
 
-var connectDB = Promise.promisify(mongoose.connect, {context: mongoose});
-
-function findJobs(query) {
-    return Promise.cast(mongoose.model('Job').find(query).exec());
-}
-
 describe('get jobs', function() {
 
     var jobs;
 
     before(function(done) {
-        connectDB(mongoAddress)
+        jobsData.connectDB(mongoAddress)
             .then(resetJobs)
-            .then(jobModel.seedJobs)
-            .then(findJobs)
+            .then(jobsData.seedJobs)
+            .then(jobsData.findJobs)
             .then(function(collection) {
                 jobs = collection;
                 done();

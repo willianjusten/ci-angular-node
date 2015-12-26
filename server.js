@@ -4,8 +4,7 @@
  * para manipular o MongoDB
  */
 var express = require('express');
-var mongoose = require('mongoose');
-var jobModel = require('./models/Job.js');
+var jobsData = require('./jobs-data');
 
 var app = express();
 
@@ -27,7 +26,7 @@ app.use(express.static(__dirname + '/public'));
 app.set('view engine', 'jade');
 
 app.get('/api/jobs', function(req, res) {
-    mongoose.model('Job').find({}).exec(function(err, collection) {
+    jobsData.findJobs().then(function(collection) {
         res.send(collection);
     });
 });
@@ -44,15 +43,10 @@ app.get('*', function(req, res) {
  * Fazendo conexão ao banco de dados
  * criado no MongoLab - https://mongolab.com/
  */
-mongoose.connect('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node');
-
-/**
- * Reportando se a conexão teve sucesso
- */
-var con = mongoose.connection;
-con.once('open', function() {
+jobsData.connectDB('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node')
+.then(function() {
     console.log('Connected to MongoDB');
-    jobModel.seedJobs();
+    jobsData.seedJobs();
 });
 
 /**
