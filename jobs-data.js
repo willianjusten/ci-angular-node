@@ -6,7 +6,7 @@ var Job = jobModel.model;
 
 var findJobs = function(query) {
     return Promise.cast(Job.find(query).exec());
-}
+};
 
 exports.findJobs = findJobs;
 
@@ -24,7 +24,7 @@ exports.seedJobs = function() {
             })
         }
     })
-}
+};
 
 var jobs = [
     {title: 'Python Developer', description: 'The best python developer from the world is needed.'},
