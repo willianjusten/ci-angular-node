@@ -8,14 +8,16 @@ var findJobs = function(query) {
     return Promise.cast(Job.find(query).exec());
 };
 
-exports.findJobs = findJobs;
+var createJob = Promise.promisify(Job.create, {context:Job});
+
 
 // Promisifying mongoose methods
 exports.connectDB = Promise.promisify(mongoose.connect, {context: mongoose});
 exports.open = Promise.promisify(mongoose.connection.open, {context:mongoose});
 
-// Seeding Jobs when collection is empty
-var createJob = Promise.promisify(Job.create, {context:Job});
+exports.saveJob = createJob;
+exports.findJobs = findJobs;
+
 exports.seedJobs = function() {
     return findJobs({}).then(function(collection){
         if(collection.length === 0) {

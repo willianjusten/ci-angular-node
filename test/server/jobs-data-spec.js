@@ -13,19 +13,24 @@ function resetJobs() {
 
 describe('get jobs', function() {
 
+
+    var job = { title: 'job title', description: 'job description' };
     var jobs;
 
     before(function(done) {
         jobsData.connectDB(mongoAddress)
             .then(resetJobs)
-            .then(jobsData.seedJobs)
+            .then(function() { return jobsData.saveJob(job) })
             .then(jobsData.findJobs)
-            .then(function(collection) {
+            .then(function setJobs(collection){
                 jobs = collection;
                 done();
             });
     });
 
+    after(function(){
+       mongoose.connection.close();
+    });
 
     it('should never be empty, since jobs are seeded', function() {
         expect(jobs.length).to.be.at.least(1);
@@ -37,5 +42,9 @@ describe('get jobs', function() {
 
     it('should have a job with a description', function() {
         expect(jobs[0].description).to.not.be.empty;
+    });
+
+    it('should have one job after saving one job', function() {
+       expect(jobs).to.have.length(1);
     });
 });
