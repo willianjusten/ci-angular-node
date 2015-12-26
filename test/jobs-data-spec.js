@@ -3,7 +3,7 @@ var mongoose = require('mongoose');
 var Promise = require('bluebird');
 var jobsData = require('../jobs-data');
 
-var mongoAddress = 'mongodb://localhoasdsadst/ci-angular-node';
+var mongoAddress = 'mongodb://localhost/ci-angular-node';
 
 function resetJobs() {
     return new Promise( function(resolve ,reject) {
