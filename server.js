@@ -5,6 +5,7 @@
  */
 var express = require('express');
 var jobsData = require('./jobs-data');
+var mongoose = require('mongoose');
 
 var app = express();
 
@@ -44,7 +45,13 @@ app.get('*', function(req, res) {
  * criado no MongoLab - https://mongolab.com/
  */
 
+mongoose.connect('mongodb://test:test123@ds027335.mongolab.com:27335/jobfinder-ci-angular-node');
 
+var con = mongoose.connection;
+con.once('open', function() {
+    console.log('Connected to MongoDB');
+    jobsData.seedJobs();
+});
 /**
  * Iniciando o servidor na porta default ou 5000
  */
