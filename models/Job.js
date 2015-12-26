@@ -6,15 +6,27 @@ var jobSchema = mongoose.Schema({
     description:{type:String}
 });
 
+var jobs = [
+    {title:'Python Developer', description:'The best python developer from the world is needed.'},
+    {title:'Javascript Developer', description:'The best Javascript developer from the world is needed.'},
+    {title:'C# Developer', description:'The best C# developer from the world is needed.'},
+    {title:'C++ Developer', description:'The best C++ developer from the world is needed.'}
+];
+
 var Job = mongoose.model('Job', jobSchema);
 
+function findJobs(query) {
+    return Promise.cast(mongoose.model('Job').find(query).exec());
+}
+
+var createJob = Promise.promisify(Job.create, {context: Job});
+
 exports.seedJobs = function() {
-    return new Promise( function(resolve, reject) {
-        Job.find({}).exec(function(err, collection) {
-            Job.create({title:'Python Developer', description:'The best python developer from the world is needed.'});
-            Job.create({title:'Javascript Developer', description:'The best Javascript developer from the world is needed.'});
-            Job.create({title:'C# Developer', description:'The best C# developer from the world is needed.'});
-            Job.create({title:'C++ Developer', description:'The best C++ developer from the world is needed.'}, resolve);
-        })
-    });
+    return findJobs({}).then(function(collection) {
+        if (collection.length === 0) {
+            return Promise.map(jobs, function(job) {
+                return createJob(job);
+            })
+        }
+    })
 };
