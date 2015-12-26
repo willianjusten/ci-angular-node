@@ -9,6 +9,13 @@
 
     function listJobs($resource, jobs) {
         this.jobs = $resource('/api/jobs/').query();
-        jobs.save({title: 'test title', description: 'test description'});
+
+        this.submit = function() {
+            var job = {title: this.title, description: this.description };
+            jobs.save(job);
+            this.jobs.push(job);
+            this.title = '';
+            this.description= '';
+        }
     }
 })(); 

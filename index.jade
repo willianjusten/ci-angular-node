@@ -6,8 +6,17 @@ script(type="text/javascript", src="/app/jobs.js")
 
 body(ng-app='app')
     .container
-        h1 Find a Job Today!!
         div(ng-controller="jobCtrl as joblist")
+            h1 Post a New Job
+            form(ng-submit="joblist.submit()")
+                .form-group
+                    input.form-control(placeholder="Title" ng-model="joblist.title")
+                .form-group
+                    textarea.form-control(placeholder="Description" ng-model="joblist.description")
+                .form-group
+                    button.btn.btn-primary(type="submit") Post
+
+            h1 Find a Job Today!!
             .list-group
                 a.list-group-item(href="#", ng-repeat="job in joblist.jobs track by $index")
                     h4.list-group-item-heading {{job.title}}
