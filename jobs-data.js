@@ -7,6 +7,7 @@ var Job = jobModel.model;
 var findJobs = function(query) {
     return Promise.cast(Job.find(query).exec());
 }
+
 exports.findJobs = findJobs;
 
 // Promisifying mongoose methods
